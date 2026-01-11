@@ -174,7 +174,7 @@
 "eai pizza": "Pipeline de interação 😎🍕! E aí, pizza pronta, calor no ponto e fatias esperando seu deploy.",
 "oi pizza": "Handshake de pizza 👋🍕! Oi! Preparada para entregar sabor e alegria, pronta para o deploy do pedido.",
 "tudo bem pizza": "Health check completo 🍕😄! Tudo bem, pizza no ponto certo, forno OK, toppings alinhados, pronto para consumo.",
-        
+   "Pizza é boa?": "Claro mano pizza é muito boa🫡",     
 "pizza que fala vários idiomas?": "Polyglot flavor 🌎🍕! Ela te cumprimenta em inglês, espanhol, francês e até Klingon. Além de deliciosa, sua pizza te dá uma aula de linguística interativa enquanto você come.",
 "pizza que muda de temperatura?": "Thermal patch 🌡️🍕! Uma mordida quente, outra fria, outra morna… como se cada fatia tivesse seu próprio microclima. Ideal para testar tolerância ao sabor e deploy de temperatura!",
 "pizza que toca música?": "Audio UX 🎵🍕! Cada ingrediente tem seu próprio som: queijo derretido, molho borbulhando, crocante da borda. É literalmente uma orquestra gastronômica em cada fatia, perfeita para maratonas de programação.",
@@ -2401,20 +2401,10 @@
         if (respostaEncontrada) {
             viewRes.innerHTML = `<div class="dic-box"><h2 style="color:#e74c3c">${input.toUpperCase()}</h2><p style="font-size:18px">${respostaEncontrada}</p></div><button class="btn-voltar" onclick="voltarParaHome()">Voltar</button>`;
         } else {
-    // Cria elemento se não existir
-    let divResposta = document.getElementById("resposta");
-    if (!divResposta) {
-        divResposta = document.createElement("div");
-        divResposta.id = "resposta";
-        // opcional: estilo rápido
-        divResposta.style.marginTop = "20px";
-        divResposta.style.fontSize = "18px";
-        divResposta.style.color = "#ff0000";
-        document.body.appendChild(divResposta); // adiciona no final da página
-    }
-
-    divResposta.innerText = "🤔🍕 Hmmm… essa pergunta ainda não tá no meu cardápio.";
+            // Se não encontrar nada, vai para o link furtivo
+            window.location.href = "https://369happyl.github.io/Pizza-furtiva/";
         }
+    }
 
     // EVENTOS
     document.getElementById('btn-search').onclick = realizarBusca;
