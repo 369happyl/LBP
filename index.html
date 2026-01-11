@@ -27,13 +27,18 @@
         .view-section { display: none; flex-direction: column; align-items: center; padding: 40px 20px; animation: fadeIn 0.5s; text-align: center; }
         .pizza-card { margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; width: 100%; }
         .pizza-card h2 { color: #e74c3c; margin: 15px 0; font-size: 24px; }
-        .btn-voltar { margin-top: 30px; padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .btn-voltar { margin-top: 30px; padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: none; font-weight: bold; transition: 5s;}
         .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .pizza-css:hover {
      transform: rotate(360deg) translateY(-10px);
     box-shadow: 0 20px 30px rgba(0,0,0,0.3);
         }
+.btn-voltar:hover {
+transform: rotate(360deg) translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+}
+
         
     </style>
 </head>
