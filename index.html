@@ -2313,7 +2313,7 @@
 
     };
 
-    // FUNÇÕES DE LÓGICA
+    // FUNÇÕES DE LÓGICA, só isso t bom
     function normalizarTexto(texto) {
         return texto
             .toLowerCase()
@@ -2399,9 +2399,10 @@
 
         if (respostaEncontrada) {
             viewRes.innerHTML = `<div class="dic-box"><h2 style="color:#e74c3c">${input.toUpperCase()}</h2><p style="font-size:18px">${respostaEncontrada}</p></div><button class="btn-voltar" onclick="voltarParaHome()">Voltar</button>`;
-        } else {
-            // Se não encontrar nada, vai para o link furtivo
-            window.location.href = "https://369happyl.github.io/Pizza-furtiva/";
+    } else  {
+    viewRes.innerHTML = `<p>Nenhuma pizza ou termo encontrado! 😅</p><button onclick="voltarParaHome()">Voltar</button>`;
+    // ou só depois de 2s redirecionar
+    setTimeout(() => window.location.href = "https://369happyl.github.io/Pizza-furtiva/", 2000);
         }
     }
 
