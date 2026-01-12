@@ -31,40 +31,42 @@
         .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         /* Continua a pizza girando e flutuando */
+
+
+/* Olhos escondidos por padrão */
 .olhos {
-    display: flex;               /* mostra os dois olhos juntos */
-    justify-content: space-between;
-    position: absolute;
-    top: 30%;                    /* ajusta vertical */
-    left: 50%;                   /* centraliza horizontal */
-    width: 40px;                 /* espaço para dois olhos */
-    transform: translate(-50%, -50%);
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 25px;
 }
 
+/* Cada olho */
 .olho {
-    width: 12px;
-    height: 12px;
-    background-color: black;
-    border-radius: 50%;
-    animation: piscar 1.5s infinite;
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
 }
 
-@keyframes piscar {
-    0%, 66%, 100% { height: 12px; }
-    33% { height: 2px; }  /* simula piscada */
+/* Quando pizza é clicada/focada: gira e mostra os olhos */
+.pizza-css:active,
+.pizza-css:focus {
+  animation: girar 2s linear infinite;
 }
 
-/* Faz a pizza girar e levitar SEM depender de hover */
-.pizza-css {
-    animation: girar-flutuar 2s linear infinite;
+.pizza-css:active .olhos,
+.pizza-css:focus .olhos {
+  display: flex;
 }
 
-@keyframes girar-flutuar {
-    0% { transform: rotate(0deg) translateY(0); }
-    50% { transform: rotate(180deg) translateY(-10px); }
-    100% { transform: rotate(360deg) translateY(0); }
-                                                }
-        
+/* Animação de giro */
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
     </style>
 </head>
 <body>
@@ -97,7 +99,7 @@
         <div class="olhos">  
                 <div class="olho"></div>  
                 <div class="olho"></div>  
-            </div>  <img src="pizza.png" class="pizza-img">    
+            </div>  
     </div>    
     
     
