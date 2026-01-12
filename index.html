@@ -30,24 +30,45 @@
         .btn-voltar { margin-top: 30px; padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;}
         .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .pizza-css:hover {
+        /* Continua a pizza girando e flutuando */
+/* Começa invisível quando não estiver girando */
+.olhos {
+    display: none;
+    position: absolute;
+    top: 50px;   /* ajuste conforme sua pizza */
+    left: 60px;  /* ajuste conforme sua pizza */
+}
+
+/* Aparece só no hover da pizza */
+.pizza-css:hover .olhos {
+    display: block;
+}
+
+/* Os olhos piscam usando ::after */
+.pizza-css:hover .olhos::after {
+    content: "👁";
+    display: block;
+    font-size: 20px;
+    animation: piscar 1.5s infinite;
+}
+
+/* Piscar alternando 👁 e 🕳 */
+@keyframes piscar {
+    0%, 66%, 100% { content: "👁"; }
+    33% { content: "🕳"; }
+}
+
+/* Continua girando e flutuando a pizza */
+.pizza-css:hover {
     animation: girar-flutuar 2s linear infinite;
     box-shadow: 0 20px 30px rgba(0,0,0,0.3);
 }
 
-/* Animação de giro + leve levitação */
 @keyframes girar-flutuar {
-    0% {
-        transform: rotate(0deg) translateY(0);
-    }
-    50% {
-        transform: rotate(180deg) translateY(-10px);
-    }
-    100% {
-        transform: rotate(360deg) translateY(0);
-    }
+    0% { transform: rotate(0deg) translateY(0); }
+    50% { transform: rotate(180deg) translateY(-10px); }
+    100% { transform: rotate(360deg) translateY(0); }
 }
-        
 
         
     </style>
@@ -78,6 +99,9 @@
         <div class="bolinhapreta" style="width:5px; height:5px; top:28px; left:35px;"></div>
         <div class="bolinhapreta" style="width:5px; height:5px; top:28px; right:35px;"></div>
         <div class="bolinhapreta" style="width:5px; height:5px; bottom:30px; left:30px;"></div>
+        <!--não sei se ta certo -->
+        <img src="pizza.png" class="pizza-img">
+    <div class="olhos"></div>
     </div>
     
         <div class="logo-text">
