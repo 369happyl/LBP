@@ -31,33 +31,39 @@
         .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         /* Continua a pizza girando e flutuando */
-/* Começa invisível quando não estiver girando */
 .olhos {
-    display: none;
+    display: flex;               /* mostra os dois olhos juntos */
+    justify-content: space-between;
     position: absolute;
-    top: 50px;   /* ajuste conforme sua pizza */
-    left: 60px;  /* ajuste conforme sua pizza */
+    top: 30%;                    /* ajusta vertical */
+    left: 50%;                   /* centraliza horizontal */
+    width: 40px;                 /* espaço para dois olhos */
+    transform: translate(-50%, -50%);
 }
 
-/* Aparece só no hover da pizza */
-.pizza-css:hover .olhos {
-    display: block;
-}
-
-/* Os olhos piscam usando ::after */
-.pizza-css:hover .olhos::after {
-    content: "👁";
-    display: block;
-    font-size: 20px;
+.olho {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
     animation: piscar 1.5s infinite;
 }
 
-/* Piscar alternando 👁 e 🕳 */
 @keyframes piscar {
-    0%, 66%, 100% { content: "👁"; }
-    33% { content: "🕳"; }
+    0%, 66%, 100% { height: 12px; }
+    33% { height: 2px; }  /* simula piscada */
 }
 
+/* Faz a pizza girar e levitar SEM depender de hover */
+.pizza-css {
+    animation: girar-flutuar 2s linear infinite;
+}
+
+@keyframes girar-flutuar {
+    0% { transform: rotate(0deg) translateY(0); }
+    50% { transform: rotate(180deg) translateY(-10px); }
+    100% { transform: rotate(360deg) translateY(0); }
+}
         
     </style>
 </head>
