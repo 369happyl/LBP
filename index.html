@@ -7,20 +7,20 @@
     <style>
         body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: all 0.3s ease; overflow-x: hidden; background-color: #fff; }
         
-        /* HEADER CORRIGIDO (Para não sair da tela) */
+        
         header { 
-            display: none; /* Começa invisível por causa do login */
-            justify-content: space-between; /* Separa os lados */
+            display: none; 
+            justify-content: space-between; 
             padding: 10px 20px; 
             gap: 10px; 
             align-items: center; 
             border-bottom: 1px solid #eee; 
             width: 100%; 
-            box-sizing: border-box; /* Impede que o padding aumente a largura total */
-            flex-wrap: wrap; /* Permite quebrar linha em telas muito pequenas */
+            box-sizing: border-box; 
+            flex-wrap: wrap; 
         }
         
-        /* Agrupa os itens da direita (Links + Perfil) */
+
         .header-right { 
             display: flex; 
             align-items: center; 
@@ -34,7 +34,7 @@
         .avatar { width: 32px; height: 32px; background: #e74c3c; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
         .btn-logout { background-color: #f1f1f1; color: #333; border: none; padding: 8px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;}
 
-        /* GERAL */
+        
         .logo-container, .logo-text { user-select: none; -webkit-tap-highlight-color: transparent; }
         main { display: none; flex-direction: column; align-items: center; justify-content: center; height: 70dvh; transition: all 0.5s ease; }
         
@@ -42,28 +42,28 @@
         .logo-text { font-size: 70px; font-weight: bold; letter-spacing: -2px; line-height: 0.9; }
         .red { color: #e74c3c; } .gold { color: #f1c40f; } .green { color: #27ae60; }
         
-        /* PIZZA CSS */
+        
         .pizza-css { background-color: #f5deb0; border-radius: 50%; position: relative; border: 5px solid #c29b61; box-shadow: 0 5px 15px rgba(0,0,0,0.1); flex-shrink: 0; transition: transform 5s ease;}
         .mio { background-color: red; border-radius: 50%; position: absolute; border: 1px solid #b30000; }
         .bolinhapreta { background-color: #333; border-radius: 50%; position: absolute; }
         .queijo { background-color: #f1c232; position: absolute; border-radius: 4px; }
         .pizza-css:hover { animation: girar-flutuar 2s linear infinite; box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
 
-        /* SEARCH & BUTTONS */
+        
         .search-container { width: 90%; max-width: 584px; border: 1px solid #dfe1e5; border-radius: 24px; padding: 12px 20px; display: flex; align-items: center; }
         .search-container input { flex: 1; border: none; outline: none; font-size: 16px; padding-left: 10px; background: transparent; color: inherit;}
         .buttons { margin-top: 30px; display: flex; gap: 12px; }
         .buttons button { background-color: #f8f9fa; border: 1px solid #f8f9fa; border-radius: 4px; padding: 10px 16px; cursor: pointer; color: #3c4043;}
         .buttons button:hover { box-shadow: 0 1px 1px rgba(0,0,0,0.1); border-color: #dadce0; color: #202124; }
 
-        /* VIEWS SECUNDARIAS */
+        
         .view-section { display: none; flex-direction: column; align-items: center; padding: 40px 20px; animation: fadeIn 0.5s; text-align: center; }
         .pizza-card { margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; width: 100%; }
         .pizza-card h2 { color: #e74c3c; margin: 15px 0; font-size: 24px; }
         .btn-voltar { margin-top: 30px; padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;}
         .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
 
-        /* TELA DE LOGIN ESTILOSA */
+        
         #view-login {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: white; z-index: 9999;
@@ -99,7 +99,7 @@
         }
         .btn-confirmar:hover { background-color: #219150; transform: translateY(-2px); }
 
-        /* DARK MODE */
+        
         body.dark { background-color: #202124; color: #e8eaed; }
         body.dark header { border-bottom-color: #3c4043; }
         body.dark a { color: #8ab4f8; }
@@ -124,6 +124,7 @@
   max-width: 1000px;
   height: 230px;
   padding: 6px;
+  position: relative;
         }
         
 .nsg img {
@@ -131,12 +132,14 @@
   max-width: 1000px;
   height: 230px;
  padding: 6px;
+position: relative;
 }
         .nsgc img {
   width: 100%;
   max-width: 1000px;
   height: 230px;
   padding: 6px;
+  position: relative;
         }
     </style>
 </head>
