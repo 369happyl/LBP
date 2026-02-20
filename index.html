@@ -119,6 +119,21 @@
         .link-cert { text-align: center; margin-top: 60px; position: relative; }
         .texto2 { position: absolute; top: -18px; left: 0; width: 100%; font-size: 12px; color: gray; }
         .link-cert a { color: gray; text-decoration: none; font-size: 11px; }
+        .heart {
+  font-size: 20px;
+  color: gray;
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: absolute;
+  bottom: 248px;
+  right: 10px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+        }
+        .heart.ativo {
+  color: red;
+  transform: scale(1.05);
+        }
         .nsh img {
   width: 100%;
   max-width: 1000px;
@@ -243,33 +258,40 @@ position: relative;
     <br>
     <br>
     <p style="font-size: 20px; padding: 8px;">pizza de calabresa em 2026 é uma das melhores do mundo.</p>
+    <div class="heart" onclick="toggleHeart(this)">❤</div>
 </div>
     <div class="nsg">
     <img src="https://lh4.googleusercontent.com/j-hJEnjlhghB9kkXR5fYsKOPRSr9NBjcBkWE9cJ81KQ_8Is0I8ImA8W0E344p22sD7t_j0pf8mDyblRM2Cl5qKJh6p1sCjJ8euSkEhxW1vUzgJgbtmS0N05SoYi9c_Gg5A">
     <p style="font-size: 20px; padding: 8px;">conhecem a pizza toscana? ela é uma delicia.</p>
+        <div class="heart" onclick="toggleHeart(this)">❤</div>
+
     </div>
       <div class="nsgc">
     <img src="https://forneriagagliasso.com.br/wp-content/uploads/2020/09/pizza-doce-confeti-scaled.jpg
       ">
     <p style="font-size: 20px; padding: 8px;">conhecem a famosa pizza de chocolate? cara pizza legal com confetes em cima, bagulho massa né cara</p>
+          <div class="heart" onclick="toggleHeart(this)">❤</div>
+
       </div>
 <script>
-    // --- LÓGICA DE LOGIN ---
+    function toggleHeart(element) {
+  element.classList.toggle("ativo");
+    }
     function checkLogin() {
         const email = localStorage.getItem('userEmail');
         
         if (email) {
-            // Usuário Logado: Esconde Login, Mostra Site
+            
             document.getElementById('view-login').style.display = 'none';
             document.getElementById('main-header').style.display = 'flex';
             document.getElementById('view-home').style.display = 'flex';
             
-            // Atualiza Header
+            
             document.getElementById('user-info').style.display = 'flex';
             document.getElementById('user-email-display').textContent = email;
             document.getElementById('user-initial').textContent = email[0].toUpperCase();
         } else {
-            // Usuário NÃO Logado: Mostra Login, Esconde Site
+            
             document.getElementById('view-login').style.display = 'flex';
             document.getElementById('main-header').style.display = 'none';
             document.getElementById('view-home').style.display = 'none';
