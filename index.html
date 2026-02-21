@@ -70,8 +70,13 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         #view-home {
-            padding-top: 120px; /* espaço pra não colar no header */
-    display: none;       /* inicialmente escondido */
+    display: none; /* inicialmente escondido */
+    padding-top: 120px; /* espaço pro header */
+    padding-bottom: 50px; /* só pra não colar no final */
+    height: auto; /* deixa o main crescer conforme o conteúdo */
+    flex-direction: column; /* opcional, se for flex */
+    align-items: center; /* só se quiser centralizar horizontal */
+    justify-content: flex-start; /* joga pro topo, não centraliza vertical */
         }
         
         .login-card {
