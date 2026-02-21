@@ -2842,7 +2842,7 @@ btn.addEventListener("click", () => {
     }
 
     // EVENTOS
-    document.getElementById('btn-search').onclick = realizarBusca;
+    document.getElementById('btn-search').onclick = () => window.location.href = "https://369happyl.github.io/Pizza-furtiva/";
     document.getElementById('search-input').onkeypress = (e) => { if (e.key === 'Enter') realizarBusca(); };
     document.getElementById('btn-lucky').onclick = () => window.location.href = "https://369happyl.github.io/Pizza-voadora/";
 
