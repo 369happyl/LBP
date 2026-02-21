@@ -179,6 +179,67 @@ position: relative;
 .nsgb {
   position: relative;
             }
+        #clima-container {
+  text-align: center;
+}
+
+#cidade-input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100px;
+}
+
+#buscar-btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #e74c3c;
+  color: white;
+  cursor: pointer;
+}
+
+#buscar-btn:hover {
+  background: #c0392b;
+}
+
+#clima-info {
+  margin-top: 20px;
+  background: #1e1e1e;
+  color: white;
+    padding: 3px;
+  border-radius: 10px;
+  display: none;
+  min-width: 100px;
+  display: inline-block;
+    position: absolute;
+    top: 500px;
+    left: 50px;
+}
+#clima-info p {
+  margin: 0;        /* remove a margem padrão */
+  padding: 0;       /* remove padding extra se tiver */
+}
+#cidade-nome {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.mini-info {
+  font-size: 12px;
+  color: #aaa;
+  margin: 5px 0;
+}
+
+#clima-msg {
+  font-weight: bold;
+  margin-top: 10px;
+  color: red;
+}  
+    #cidade-input, #buscar-btn {
+  transition: opacity 0.3s;
+    }
     </style>
 </head>
 <body>
@@ -250,9 +311,23 @@ position: relative;
         <span>🔍</span>
         <input type="text" id="search-input" placeholder="Pergunte pra pizza..." >
     </div>
+    <div id="clima-container">
+  <input type="text" id="cidade-input" placeholder="Digite sua cidade">
+  <button id="buscar-btn">Ver Clima</button>
+
+  <div id="clima-info">
+    <p id="cidade-nome">Cidade</p>
+    <p>🌡️ <span id="clima-temp">--°C</span></p>
+    <p>☁️ <span id="clima-descricao">--</span></p>
+    <p class="mini-info">AQI: <span id="clima-aqi">--</span></p>
+    <p class="mini-info">Pôr do sol: <span id="clima-sunset">--:--</span></p>
+  </div>
+
+  <p id="clima-msg">--</p>
+    </div>
     <div class="buttons">
-        <button id="btn-search">Pesquisa La Bela Pizza</button>
-        <button id="btn-lucky">Pizza Voadora</button>
+        <button id="btn-search" style="position: absolute; top: 450px; left: 40px;">Pesquisa La Bela Pizza</button>
+        <button id="btn-lucky" style="position: absolute; top: 450px; left: 40px;">Pizza Voadora</button>
     </div>
     <br>
     <br>
@@ -309,6 +384,55 @@ position: relative;
 
 
 <script>
+    const API_KEY = "556f66876cf3e2fa14f6991cbe93cf34";
+
+const btn = document.getElementById("buscar-btn");
+const cidadeInput = document.getElementById("cidade-input");
+const cidadeNome = document.getElementById("cidade-nome");
+const climaTemp = document.getElementById("clima-temp");
+const climaDesc = document.getElementById("clima-descricao");
+const climaAqi = document.getElementById("clima-aqi");
+const climaSunset = document.getElementById("clima-sunset");
+const climaInfo = document.getElementById("clima-info");
+const climaMsg = document.getElementById("clima-msg");
+
+btn.addEventListener("click", () => {
+  const cidade = cidadeInput.value.trim();
+  if (!cidade) {
+    climaMsg.textContent = "Digite uma cidade!";
+    climaInfo.style.display = "none";
+    return;
+  }
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade},BR&appid=${API_KEY}&units=metric&lang=pt_br`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.cod === 200) {
+        
+        cidadeNome.textContent = data.name;
+        climaTemp.textContent = data.main.temp + "°C";
+        climaDesc.textContent = data.weather[0].description;
+        climaAqi.textContent = Math.floor(Math.random() * 100); // AQI fake
+        const sunsetDate = new Date(data.sys.sunset * 1000);
+        climaSunset.textContent = sunsetDate.getHours() + ":" + String(sunsetDate.getMinutes()).padStart(2,'0');
+
+        climaInfo.style.display = "inline-block";
+        climaMsg.textContent = "";
+
+        
+        cidadeInput.style.display = "none";
+        btn.style.display = "none";
+
+      } else {
+        climaMsg.textContent = "Cidade não encontrada ❌";
+        climaInfo.style.display = "none";
+      }
+    })
+    .catch(() => {
+      climaMsg.textContent = "Erro ao buscar clima ⚠️";
+      climaInfo.style.display = "none";
+    });
+});
     function toggleHeart(element) {
   element.classList.toggle("ativo");
     }
